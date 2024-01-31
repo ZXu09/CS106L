@@ -1,0 +1,38 @@
+TODO: Delete this line and answer the short questions in the assignment within this file!
+1. It is your choice to use either an ordered or unordered set. In a few sentences,
+   what are some of the tradeoffs between the two? Additionally, please give an
+   example (that has not been shown in lecture) of a valid hash function that could
+   be used to hash student names for an unordered set
+
+   An ordered set (std::set) maintains its elements in a sorted order according to
+   a specified sorting criterion. This allows for efficient search, insertion, and
+   deletion operations, all of which have a time complexity of O(log n).
+   However, maintaining the sorted order can lead to slower insertions and deletions
+   compared to an unordered set.
+
+
+2. Try changing the backing container of the std::queue from its default value to
+   either a list or a vector. Implementation wise, what changes? Why would the C++
+   developers leave this as an option? Explain container adaptors in this manner in
+   3-5 sentences.
+
+   By default, std::queue uses std::deque as its underlying container.
+
+   std::list allows efficient insertions and deletions at both ends, making it a
+   good choice for a queue.
+
+   std::vector provides efficient random access but its insertions and deletions
+   at the front are not as efficient, which could be a disadvantage for a queue.
+
+3. Note that we are saving pointers to names in the queue, not names themselves.
+   Why might this be desired in this problem? What happens if the original set
+   where the names are stored goes out of scope and the pointers are referenced?
+
+   It can save memory, especially if the names are long strings, pointers have a
+   fixed size, regardless of the size of the data they point to. And it allows the
+   queue to reflect any changes made to the names in the original set.
+
+   If the original set where the names are stored goes out of scope, the pointers
+   in the queue will become dangling pointers, pointing to memory that has been
+   deallocated. Attempting to access the names through these pointers will result
+   in undefined behavior
